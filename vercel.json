@@ -1,11 +1,6 @@
 {
     "version": 2,
-    "builds": [
-        {
-            "src": "vite.config.js",
-            "use": "@vercel/node"
-        }
-    ],
+
     "framework": null,
     "functions": {
         "api/index.php": { "runtime": "vercel-php@0.7.3" }
