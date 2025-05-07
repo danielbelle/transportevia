@@ -1,5 +1,11 @@
 {
     "version": 2,
+    "builds": [
+        {
+            "src": "vite.config.js",
+            "use": "@vercel/node"
+        }
+    ],
     "framework": null,
     "functions": {
         "api/index.php": { "runtime": "vercel-php@0.7.3" }
@@ -7,15 +13,7 @@
     "routes": [
         {
             "src": "/build/(.*)",
-            "dest": "/build/$1"
-        },
-        {
-            "src": "/build/assets/(.*)",
-            "dest": "/public/build/assets/$1"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/api/index.php"
+            "dest": "/public/build/$1"
         },
         {
             "src": "/(.*)",
