@@ -34,6 +34,10 @@
 
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie"
+        "SESSION_DRIVER": "cookie",
+        "PHP_INI_SCAN_DIR": "/var/task/user/php/conf.d:/var/task/php/conf.d",
+        "PHP_EXTENSION_CURL": "1",
+        "PHP_EXTENSION_PGSQL": "1",
+        "PHP_EXTENSION_PDO_PGSQL": "1"
     }
 }
