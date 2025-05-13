@@ -4,6 +4,16 @@
     "functions": {
         "api/index.php": { "runtime": "vercel-php@0.7.3" }
     },
+    "builds": [
+        {
+            "src": "public/**",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "index.php",
+            "use": "@vercel/php"
+        }
+    ],
     "routes": [
         {
             "src": "/build/(.*)",
@@ -22,7 +32,7 @@
             "dest": "/public/$1"
         },
         {
-            "src": "/vercel/(.*)",
+            "src": "/vendor/sign-pad/(.*)",
             "dest": "/public/vendor/sign-pad/$1"
         }
     ],
