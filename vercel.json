@@ -20,6 +20,10 @@
         {
             "src": "/(.*)",
             "dest": "/public/$1"
+        },
+        {
+            "src": "/vercel/(.*)",
+            "dest": "/public/vendor/sign-pad/$1"
         }
     ],
     "outputDirectory": "public",
