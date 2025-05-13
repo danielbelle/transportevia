@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\InputController;
+use App\Http\Controllers\AttachedController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/input-form', [InputController::class, 'showFormInput'])->name('input.form');
+Route::post('/process-input', [InputController::class, 'processInput'])->name('process.input');
