@@ -211,11 +211,11 @@
             {{ $message }}
           </div>
         @enderror
-        <div class="flex flex-col text-center w-full mb-6">
+        <div class="flex flex-col w-full">
           <p class="leading-7 text-sm text-gray-600 p-1">Desenhe a sua
             assinatura com o mouse</p>
           <x-creagia-signature-pad id='sign' name='sign' border-color="#9a9a9a"
-            pad-classes="rounded-xl border-2 bg-transparent sm:w-100 sm:h-100"
+            pad-classes="rounded-xl border-2 bg-transparent"
             button-classes="py-2 mt-4 mx-auto text-white bg-indigo-500 border-0 px-4 focus:outline-none hover:bg-indigo-600 rounded text-md"
             clear-name="Limpar Assinatura" submit-name='Enviar' :disabled-without-signature="true" />
         </div>
