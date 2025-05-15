@@ -205,7 +205,7 @@
         @enderror
       </div>
 
-      <div class="p-2">
+      <div class="p-2 lg:w-2/3 mx-auto leading-relaxed text-base">
         @error('sign')
           <div class="text-red-500 text-sm mt-1">
             {{ $message }}
