@@ -211,7 +211,7 @@
             {{ $message }}
           </div>
         @enderror
-        <div class="w-100 items-center justify-center">
+        <div class="flex flex-col text-center w-full mb-6">
           <p class="leading-7 text-sm text-gray-600 p-1">Desenhe a sua
             assinatura com o mouse</p>
           <x-creagia-signature-pad id='sign' name='sign' border-color="#9a9a9a"
