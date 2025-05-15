@@ -205,14 +205,14 @@
         @enderror
       </div>
 
-      <div class="p-2 w-full">
+      <div class="p-2">
         @error('sign')
           <div class="text-red-500 text-sm mt-1">
             {{ $message }}
           </div>
         @enderror
         <div class="block items-center justify-center">
-          <p class="leading-7 text-sm text-gray-600 px-auto p-1">Desenhe a sua
+          <p class="leading-7 text-sm text-gray-600 p-1">Desenhe a sua
             assinatura com o mouse</p>
           <x-creagia-signature-pad id='sign' name='sign' border-color="#9a9a9a"
             pad-classes="rounded-xl border-2 bg-transparent sm:w-100 sm:h-100"
@@ -232,12 +232,6 @@
             {{ $message }}
           </div>
         @enderror
-      </div>
-
-      <div class="p-2 w-100">
-        <div class="relative">
-          <script src="{{ asset('vendor/sign-pad/sign-pad.min.js') }}"></script>
-        </div>
       </div>
 
     </div>
