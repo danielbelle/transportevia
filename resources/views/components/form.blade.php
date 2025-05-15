@@ -35,7 +35,7 @@
 <form method="POST" autocomplete="off" action="{{ route('process.input') }}">
   @csrf
 
-  <div class="lg:w-80">
+  <div class="md:w-2/3 mx-auto">
     <div class="flex flex-wrap">
 
       <div class="p-2 w-1/3">
