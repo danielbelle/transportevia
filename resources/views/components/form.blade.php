@@ -234,8 +234,9 @@
         @enderror
       </div>
 
+      <script src="{{ asset('vendor/sign-pad/sign-pad.min.js') }}"></script>
+
     </div>
   </div>
-  <script src="{{ asset('vendor/sign-pad/sign-pad.min.js') }}"></script>
 
 </form>
