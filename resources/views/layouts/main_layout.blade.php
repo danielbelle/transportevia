@@ -41,7 +41,6 @@
 
   </section>
 
-  <script src="{{ asset('vendor/sign-pad/sign-pad.min.js') }}"></script>
 
 </body>
 
