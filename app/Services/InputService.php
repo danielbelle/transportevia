@@ -42,14 +42,10 @@ class InputService
         'signatureName' => [91, 170],
     ];
 
-    public function processInput(array $encryptedData)
+    public function processInput(array $inputData)
     {
         try {
-            $decryptedInput = array_map(function ($value) {
-                return Crypt::decryptString($value);
-            }, $encryptedData);
-
-            $processResult = $this->formatPDF($decryptedInput);
+            $processResult = $this->formatPDF($inputData);
         } catch (DecryptException $e) {
             throw new \RuntimeException('Failed to decrypt input data');
         }
@@ -57,7 +53,7 @@ class InputService
         return $processResult;
     }
 
-    protected function formatPDF($decryptedInput)
+    protected function formatPDF($inputData)
     {
         // Initialize FPDI
         $pdf = new Fpdi();
@@ -77,10 +73,10 @@ class InputService
         $pdf->SetTextColor(0, 0, 0);
         $pdf->SetCreator('Daniel Henrique Belle', true);
 
-        $decryptedInput['sign'] = $this->setText($pdf, $decryptedInput);
+        $inputData['sign'] = $this->setText($pdf, $inputData);
 
         // Output the modified PDF
-        $firstName = explode(' ', $decryptedInput['name'])[0];
+        $firstName = explode(' ', $inputData['name'])[0];
         $outputPathAux = 'transporte-carro-' . $firstName . '.pdf';
         $outputPath = $this->internalPath->path($this->attachDir . $outputPathAux);
         $pdf->Output($outputPath, 'F');
@@ -88,17 +84,17 @@ class InputService
         response()->download($outputPath);
 
         // get and save inputDocument
-        if (isset($decryptedInput['inputDocument']) && !empty($decryptedInput['inputDocument'])) {
+        if (isset($inputData['inputDocument']) && !empty($inputData['inputDocument'])) {
             $inputDocumentPath = $this->internalPath->path($this->attachDir . $_ENV['PDF_OPTIONAL_ATTACH'] . $firstName . '.pdf');
-            file_put_contents($inputDocumentPath, base64_decode($decryptedInput['inputDocument']));
+            file_put_contents($inputDocumentPath, base64_decode($inputData['inputDocument']));
             $decryptedInput['inputDocument'] = $inputDocumentPath;
         }
 
 
         //Mail::to($decryptedInput['email'])->send(new ContactUs($decryptedInput, $outputPath, $inputDocumentPath));
 
-        $decryptedInput['outputPath'] = $outputPathAux;
-        return $decryptedInput;
+        $inputData['outputPath'] = $outputPathAux;
+        return $inputData;
     }
 
 

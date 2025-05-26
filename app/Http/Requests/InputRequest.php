@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Crypt;
 
 class InputRequest extends FormRequest
 {
@@ -47,21 +46,16 @@ class InputRequest extends FormRequest
         ]; */
     }
 
-    public function getInputAndEncryptData()
+    public function getInputData()
     {
-
-        $arrayEncrypted = [];
+        $arrayInput = [];
 
         foreach ($this->rules() as $key => $value) {
-            $arrayEncrypted[$key] = $this->encryptAndValidate($key) ?? '';
+            $arrayInput[$key] = isset($this->validated()[$key])
+                ? $this->validated()[$key]
+                : '';
         }
 
-        return $arrayEncrypted;
-    }
-
-    private function encryptAndValidate(string $data): string
-    {
-
-        return Crypt::encryptString($this->validated()[$data]) ?? '';
+        return $arrayInput;
     }
 }

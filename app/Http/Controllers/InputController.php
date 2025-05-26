@@ -20,15 +20,15 @@ class InputController extends Controller
 
     public function processInput(InputRequest $request)
     {
-        $encryptedData = $request->getInputAndEncryptData();
-
-        return $this->systemResult($encryptedData);
+        $inputData = $request->getInputData();
+        //Service aqui
+        return $this->systemResult($inputData);
     }
 
-    private function systemResult($encryptedData)
+    private function systemResult($inputData)
     {
         try {
-            $result = $this->inputService->processInput($encryptedData);
+            $result = $this->inputService->processInput($inputData);
             return redirect()->route('emailPreview')->with('process', $result);
         } catch (\RuntimeException $e) {
             return redirect()->back()->withErrors([
